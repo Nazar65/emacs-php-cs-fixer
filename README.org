@@ -10,6 +10,7 @@ provided by the powerful [[http://cs.sensiolabs.org/][PHP Coding Standards Fixer
 
 * Installation
 ** System part
+   Using straight
 #+BEGIN_SRC elisp
 (use-package php-cs-fixer
   :straight (:type git :repo "Nazar65/emacs-php-cs-fixer")
