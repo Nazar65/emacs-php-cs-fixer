@@ -25,7 +25,9 @@ Try /`M-x php-cs-fix [ret]`/ when editing a /PHP/ file.
 
 If you want an automatic fix when saving all php files, place this code in your /Emacs/ configuration file the line :
 #+BEGIN_SRC elisp
-(add-hook 'before-save-hook 'php-cs-fixer-before-save)
+(add-hook 'php-mode-hook
+            (lambda ()
+              (add-hook 'before-save-hook 'php-cs-fixer-before-save)))
 #+END_SRC
 
 * Customisable variable
