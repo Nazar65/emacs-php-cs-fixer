@@ -29,6 +29,14 @@
   :link '(url-link :tag "Source code repository" "https://github.com/OVYA/php-cs-fixer")
   :link '(url-link :tag "Executable dependency" "https://github.com/FriendsOfPHP/PHP-CS-Fixer"))
 
+(defcustom php-cs-fixer-temporary-directory (expand-file-name "php-cs-fixer" "~/.emacs.d")
+  "The 'php-cs-fixer' config option.
+If not nil `php-cs-rules-level-part-options`
+and `php-cs-rules-fixer-part-options` are not used."
+  :type 'string
+  :group 'php-cs-fixer)
+
+
 (defcustom php-cs-fixer-command "php-cs-fixer"
   "The 'php-cs-fixer' command."
   :type 'string
@@ -210,8 +218,8 @@ Add this to .emacs to run php-cs-fix on the current buffer when saving:
   (when (and
          buffer-file-name
          (string= (file-name-extension buffer-file-name) "php")
-         (or (not (boundp 'geben-temporary-file-directory))
-             (not (string-match geben-temporary-file-directory (file-name-directory buffer-file-name))))
+         (or (not (boundp 'php-cs-fixer-temporary-directory))
+             (not (string-match php-cs-fixer-temporary-directory (file-name-directory buffer-file-name))))
          ) (php-cs-fixer-fix)))
 
 (provide 'php-cs-fixer)
